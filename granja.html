@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Document</title>
+</head>
+<body>
+<script>
+    const granja = [];
+
+    function capitalizar(texto) {
+        return texto.charAt(0).toUpperCase() + texto.slice(1).toLowerCase();
+    }
+
+    function anadirAnimal(nombre, tipoEspecie, tamaño) {
+        const animal = {
+            nombre: capitalizar(nombre),
+            tipoEspecie: capitalizar(tipoEspecie),
+            tamaño: tamaño,
+        };
+
+        granja.push(animal);
+        console.log(`El/la ${animal.nombre} ha sido añadido correctamente`);
+    }
+
+    function listarAnimales() {
+        if (granja.length === 0) {
+            console.log(`No hay animales en la granja.`);
+            return;
+        }
+        console.log(`Animales disponibles:`);
+        granja.forEach((animal) => {
+            console.log(
+                `${animal.nombre}, (Tipo de especie: ${animal.tipoEspecie}, con un tamaño ${animal.tamaño})`
+            );
+        });
+    }
+
+    function buscarPorEspecie(especie) {
+        const tipoEspecieAnimal = granja.filter(
+            (animal) => animal.tipoEspecie.toLowerCase() === especie.toLowerCase()
+        );
+
+        if (tipoEspecieAnimal.length > 0) {
+            console.log(
+                `Los animales que hay de esta especie (${especie}) son: `
+            );
+            tipoEspecieAnimal.forEach((animal) =>
+                console.log(`${animal.nombre}`)
+            );
+        } else {
+            console.log(`No existen animales de esta especie.`);
+        }
+    }
+
+    anadirAnimal("vaca", "mamífero", "grande");
+    listarAnimales();
+    buscarPorEspecie("Mamífero");
+</script>
+</body>
+</html>

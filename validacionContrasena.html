@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Validación de contraseña</title>
+  </head>
+  <body>
+    <script>
+      //Introducción de variables
+      let nombre, contraseña;
+
+      //Variable centinela para saber si el usuario cancela el cuadro
+      let seguir = true;
+
+      //Variable centinela que me va a avisar de la corrección del nombre de usuario
+      let nombreOk = true;
+
+      //Variable centinela que me avisará de la corrección de contraseña
+      let contraseñaOk;
+
+      //Variable centinela de cada premisa de la contraseña
+      let hayMinusculas = false;
+      let hayMayusculas = false;
+      let hayNumeros = false;
+      let hayOtros = false;
+
+      //String con las letras preparadas
+      const minusculas = "qwertyuiopasdfghjklñzxcvbnm";
+      const numeros = "0123456789";
+
+      //Petición del nombre de usuario
+      do {
+        nombre = prompt("Escriba su nombre de usuario deseado");
+        if (nombre == null) seguir = false;
+        if (seguir) {
+          //charAt(i) --> Devuelve el valor para ese índice
+          //indexOf(valor) --> Devuelve el índice del primer elemento que coincida con ese valor
+          //Si no coincide devuelve -1 HOLA indexOf(U) me devolvería -1 porque la letra U no está en la palabra HOLA
+          let i = 0;
+          while (nombreOk && i < nombre.length) {
+            let caracter = nombre.charAt(i);
+            //Validamos si es una letra minúscula
+            if (minusculas.indexOf(caracter) == -1) {
+              //No se encuentra el carácter en el vector de minúsculas
+              nombreOk = false;
+              alert("El usuario es incorrecto. Solo se admiten minúsculas");
+            }
+            i++;
+          }
+        }
+      } while (seguir == true && nombreOk == false);
+
+      //Validación de contraseña
+      if (seguir) {
+        do {
+          hayMinusculas = false;
+          hayMayusculas = false;
+          hayNumeros = false;
+          hayOtros = false;
+
+          //Le pedimos al usuario que indique la contraseña
+          contraseña = prompt("Introduzca la contraseña");
+
+          if (contraseña == null) seguir = false;
+          if (seguir) {
+            //VALIDACIÓN DE CONTRASEÑA
+            contraseñaOk = true;
+            let i = 0;
+            while (contraseñaOk && i < contraseña.length) {
+              let caracter = contraseña.charAt(i);
+
+              //Validamos si hay alguna letra minúscula
+              if (minusculas.indexOf(caracter) != -1) {
+                hayMinusculas = true;
+              }
+
+              //toUpperCase --->Convierte las minúsculas en mayúsculas
+              else if (minusculas.toUpperCase().indexOf(caracter) != -1) {
+                hayMayusculas = true;
+              } else if (numeros.indexOf(caracter) != -1) {
+                hayNumeros = true;
+              } else {
+                hayOtros = true;
+              }
+              i++;
+            }
+            contraseñaOk =
+              hayMinusculas == true &&
+              hayMayusculas == true &&
+              hayNumeros == true &&
+              hayOtros == true;
+            if (contraseñaOk == false) {
+              alert("La contraseña que ha ingresado no es válida");
+            }
+          }
+          console.log(
+            "Mayúsculas: " +
+              hayMayusculas +
+              ", Minúsculas: " +
+              hayMinusculas +
+              ", Números: " +
+              hayNumeros +
+              ", Símbolos: " +
+              hayOtros
+          );
+        } while (seguir == true && contraseñaOk == false);
+      }
+      //Mensaje final
+      if (seguir == true) {
+        document.write("<p> Datos almacenados </p>");
+      } else {
+        document.write("<p> El usuario canceló la operación </p>");
+      }
+    </script>
+  </body>
+</html>

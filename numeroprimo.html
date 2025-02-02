@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Números primos</title>
+  </head>
+  <body>
+    <script>
+      //Crea un programa que solicite al usuario un
+      //número entero positivo y luego cuente y muestre
+      //la cantidad de números primos en el rango del 1 al número ingresado por el usuario.
+      const numeroIngresado = parseInt(
+        prompt("Ingrese un número entero positivo")
+      );
+
+      if (!isNaN(numeroIngresado) && numeroIngresado > 0) {
+        let contadorNumerosPrimos = 0;
+
+        for (let i = 2; i <= numeroIngresado; i++) {
+          let esPrimo = true;
+
+          //Creamos un bucle que copruebe que los números anteriores no sean divisibles
+          for (let j = 2; j < i; j++) {
+            if (i % j === 0) {
+              esPrimo = false;
+              break;
+            }
+          }
+          if (esPrimo) {
+            contadorNumerosPrimos++;
+          }
+        }
+        console.log("En el rango del 1 al " + numeroIngresado + " hay " + contadorNumerosPrimos+ " números primos");
+      }else{
+        console.log("Ingrese un número entero positivo válido");
+      }
+    </script>
+  </body>
+</html>

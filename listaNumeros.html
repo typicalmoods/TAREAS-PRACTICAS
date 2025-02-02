@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de números</title>
+  </head>
+  <body>
+    >
+    <script>
+      //push --> Agregar nuevos elementos al final de un array
+      //reduce --> Sumar todos elementos de una array
+      //Math.max, Math.min --> Capaz de encontrar el mayor y el menor número
+      //spread --> ... Hacer conversiones
+      //reverse --> Invertir el orden de una array
+      //[... vector] --> Hacer una copia del array original
+      //join --> Combinar todos los elementos de una array en una cadena de texto separada por comas
+
+      //Inicializamos una array vacía para almacenar números
+      let numeros = [];
+
+      //Creamos una función para agregar un número a una array --> push
+      function agregarNumero() {
+        const numero = parseFloat(prompt("Escriba un número para agregar: "));
+        if (!isNaN(numero)) {
+          numeros.push(numero);
+          console.log(
+            `El número ${numero} introducido ha sido agregado a la lista`
+          );
+        } else {
+          console.log("Entrada no válida. Por favor, introduzca un número");
+        }
+      }
+
+      //Función para calcular el promedio --> reduce
+      function calcularPromedio() {
+        if (numeros.length === 0) {
+          console.log("La lista se encuentra vacía");
+          return;
+        }
+        const suma = numeros.reduce(
+          (acumulador, numero) => acumulador + numero,0);
+        //Dividir para calcular el promedio
+        const promedio = suma / numeros.length;
+
+        //toFixed --> Le doy como argumento el número de decimales que quiero que coja.
+        console.log(`El promedio de los números es: ${promedio.toFixed(2)}`);
+      }
+
+      //Función para encontrar el mayor y el menor(Math.max, Math.min, (...))
+      function encontrarMayorYMenor(){
+        if(numeros.length === 0) {
+            console.log("La lista está vacía");
+            return;
+        }
+        const mayor = Math.max(...numeros); //Convierto mi vector [números] en una lista ()
+        const menor = Math.min(...numeros);
+
+        console.log(`El número mayor es: ${mayor}`);
+        console.log(`El número menor es: ${menor}`);
+      }
+
+      //Función para mostrar los números en orden inverso: reverse
+      function mostrarEnOrdenInverso(){
+        if(numeros.length===0) {
+            console.log("La lista está vacía");
+            return;
+        }
+        const invertido = [...numeros].reverse();
+        console.log(`Números en orden inverso: ${invertido.join(", ")}`);
+      }
+
+      //Menú principal para interactuar con el usuario
+
+      function iniciar() {
+        let salir =false; //Bandera para controlar al usuario
+        while(!salir){
+            const opcion = prompt(`
+            Menú de opciones:
+            1. Agregar un número
+            2. Calcular el promedio
+            3. Encontrar el número mayor y menor
+            4. Mostrar números en orden inverso
+            5. Salir del programa`);
+
+            switch(opcion){
+                case "1":
+                    agregarNumero();
+                    break;
+                
+                case "2":
+                    calcularPromedio();
+                    break;
+
+                case "3":
+                    encontrarMayorYMenor();
+                    break;
+                
+                case "4":
+                    mostrarEnOrdenInverso();
+                    break;
+                
+                case "5":
+                    salir = true;
+                    console.log("Saliendo del programa...");
+                    break;
+                
+                default:
+                    console.log("Opción no válida.");
+            }
+        }
+      }
+      //Iniciar el programa
+      iniciar();
+    </script>
+  </body>
+</html>

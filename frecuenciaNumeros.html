@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frecuencia de Números Aleatorios</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+            width: 50%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Frecuencia de Números Aleatorios</h1>
+    <button onclick="calcularFrecuencia()">Generar Frecuencias</button>
+    <div id="result"></div>
+
+    <script>
+        function calcularFrecuencia() {
+            const iteraciones = 10000;
+            const frecuencias = Array(10).fill(0); // Array para contar la frecuencia de números del 1 al 10
+            
+            // Generar números aleatorios
+            for (let i = 0; i < iteraciones; i++) {
+                const numero = Math.floor(Math.random() * 10) + 1; // Número entre 1 y 10
+                frecuencias[numero - 1]++; // Incrementar la frecuencia correspondiente
+            }
+
+            // Mostrar resultados en una tabla
+            let tabla = "<table>";
+            tabla += "<tr>";
+            tabla += "<th>Número</th>";
+            tabla += "<th>Frecuencia</th>";
+            tabla += "</tr>";
+            
+            for (let i = 0; i < frecuencias.length; i++) {
+                tabla += "<tr>";
+                tabla += "<td>" + (i + 1) + "</td>";
+                tabla += "<td>" + frecuencias[i] + "</td>";
+                tabla += "</tr>";
+            }
+
+            tabla += "</table>";
+            
+            // Insertar tabla en el DOM
+            document.getElementById("result").innerHTML = tabla;
+        }
+    </script>
+</body>
+</html>
+

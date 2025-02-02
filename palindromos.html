@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palíndromos</title>
+    <script>
+        //Función que devuelve true si es palíndromo y false si no lo es
+        //toLowerCase --> convertir a minúsculas
+        //split('')--> convierte la cadena en un array de caracteres
+        //reverse()--> invertir la array
+        //join()--> une los caracteres del array en una cadena
+
+        function esPalindromo(texto){
+            //Convierto el texto en minúsculas
+            var textoLimpio = texto.toLowerCase();
+            return textoLimpio === textoLimpio.split('').reverse().join('');
+        }
+    </script>
+</head>
+<body>
+    <script>
+        var textoUsario = prompt("Ingrese un texto: ");
+
+        //trim--> Quitar los espacios del principio y del final
+        if(textoUsario.trim()==''){
+            var textoUsuario = prompt("Por favor, ingrese un texto válido.");
+        }else{
+            var esPalin = esPalindromo(textoUsario);
+
+            //if(esPalin == true) mensaje = "Es palíndromo"; else...
+            var mensaje = esPalin? 'Es palíndromo' : 'No es palíndromo';
+            console.log(`${mensaje}`);
+        }
+    </script>
+</body>
+</html>

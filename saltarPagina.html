@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirección</title>
+    <script>
+        // Función para redirigir después de 7 segundos
+        function redirigir() {
+            setTimeout(function() {
+                window.location.href = "https://www.ejemplo.com"; // Cambia esta URL por la deseada
+            }, 7000); // 7000 milisegundos = 7 segundos
+        }
+    </script>
+</head>
+<body onload="redirigir()">
+    <h1>Saltamos a la página <span style="color: blue;">NOMBRE_DE_LA_PÁGINA</span></h1>
+    <p>Serás redirigido en 7 segundos...</p>
+</body>
+</html>

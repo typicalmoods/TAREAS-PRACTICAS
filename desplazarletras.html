@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cifrado César</title>
+  </head>
+  <body>
+    <script>
+      //El cifrado César consiste en tomar cada letra de un mensaje y desplazarla en el alfabeto el número que diga una clave.
+      //Por ejemplo, la letra A desplazada con clave 2 se convertirá en C.
+      let texto = prompt("Escriba el texto que desea cifrar: ");
+      let clave;
+
+      //Validación de que es una clave válida
+      //Number convierte el texto en un número
+      do {
+        clave = Number(prompt("Escribe la clave (número entero): "));
+        if (isNaN(clave)) {
+          alert("No has escrito un número");
+        }
+      } while (isNaN(clave));
+
+      //for in --> Para recorrer string, arrays
+      clave = parseInt(clave);
+      //Va ir recorriendo el texto introducido por el usuario
+      for (let letra in texto) {
+        //charCodeAt --> Devuelve el unicode del carácter en el índice especificado
+        let cifra = texto.charCodeAt(letra) + clave;
+
+        //fromCharCode --< Convertir valores unicode en caracteres
+        document.write(String.fromCharCode(cifra));
+      }
+    </script>
+  </body>
+</html>

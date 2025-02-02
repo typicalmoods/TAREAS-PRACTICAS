@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //Variables para representar el avance de cada tortuga
+      let tortuga1 = 0;
+      let tortuga2 = 0;
+      let tortuga3 = 0;
+
+      //Iniciamos el juego y pedimos al jugador elegir una tortuga
+      //toLowerCase() --> convertir un texto en minúsculas
+      const apuesta = prompt(
+        "Bienvenido al juego. ¿Qué tortuga elegirá? ¿tortuga1? ¿tortuga2? ¿O tortuga3?"
+      ).toLowerCase();
+
+      //Variable para almacenar al ganador
+      let ganador = null;
+
+      //Generamos un bucle para que las tortugas vayan avanzando
+      while (!ganador) {
+        //Generar un número aleatorio entre 1 y 5 para el avance de cada tortuga
+        const avanceTortuga1 = Math.floor(Math.random() * 5) + 1;
+        const avanceTortuga2 = Math.floor(Math.random() * 5) + 1;
+        const avanceTortuga3 = Math.floor(Math.random() * 5) + 1;
+
+        //Sumar el avance de la posición de cada tortuga
+        tortuga1 += avanceTortuga1;
+        tortuga2 += avanceTortuga2;
+        tortuga3 += avanceTortuga3;
+
+        //Verificar si alguna tortuga ha alcanzado la meta (20 posiciones)
+        if (tortuga1 >= 20 || tortuga2 >= 20 || tortuga3 >= 20) {
+          //Si tortuga 1 llegó antes...
+          if (tortuga1 >= 20) {
+            ganador = "tortuga1";
+          } else if (tortuga2 >= 20) {
+            ganador = "tortuga2";
+          } else {
+            ganador = "tortuga3";
+          }
+        }
+      }
+      //Mensaje final verificando si el jugador ganó o perdió
+      if (ganador == apuesta) {
+        alert("¡Enhorabuena! ¡Has ganado la partida!");
+      } else {
+        alert(`Lo siento. Has perdido. La tortuga ganadora era: ${ganador}`);
+      }
+    </script>
+  </body>
+</html>

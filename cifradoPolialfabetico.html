@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cifrado estilo polialfabético</title>
+  </head>
+  <body>
+    <script>
+      //Se trata de mejorar el cifrado anterior en el cada letra siempre se va a corresponder
+      //con la misma letra cifrada (lo que facilita su cifrado)
+
+      let texto = prompt("Escriba el texto que desea cifrar");
+      let clave = prompt("Escriba la clave (una serie numérica)");
+      let i = 0;
+      //i se encarga de recorrer las cifras de la clave
+
+      //for in --> La variable que se crea en el bucle, almacena los distintos índices
+      for (let letra in texto) {
+        //charCodeAt --> Devuelve el código unicode asociado al valor
+        //charAt --> Extrae el carácter del vector o del string
+        //fromCharCode -->Valor de la tabla unicode asociado a la cifra
+        let cifra = texto.charCodeAt(letra) + Number(clave.charAt(i));
+        document.write(String.fromCharCode(cifra));
+        i++;
+        if (i == clave.length) i = 0;
+      }
+    </script>
+  </body>
+</html>

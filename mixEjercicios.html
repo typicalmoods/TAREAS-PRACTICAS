@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EJERCICIO 2</title>
+  </head>
+  <body>
+    <script>
+      /*Crea un programa en JavaScript que realice las siguientes acciones:
+        -Pide al usuario su nombre y su edad.
+        -Si la edad es mayor o igual a 18, felicítalo por ser mayor de edad. De lo contrario, indícale que aún es menor de edad.
+        -Calcula cuántos años le faltan para llegar a 100 y muestra un mnesaje con el resultado.
+        -Usa un bucle for para mostrar los números del 1 al 10.
+        -Genera un número aleatorio ente el 1 y el 10 y permite al usuario adivinarlo en un máximo de 3 intentos.
+        */
+
+      //Pide al ususario su nombre y su edad
+      let nombre = prompt("¿Cuál es tu nombre?");
+      console.log(nombre);
+      let edad = parseInt(prompt("¿Cuál es tu edad?"));
+      console.log(edad);
+
+      //Muestra un mensaje según si es mayor o menor de edad
+      if (edad >= 18) {
+        console.log("¡Felicidades por ser mayor de edad!");
+      } else {
+        console.log("Aún eres menor de edad");
+      }
+
+      //Calcula cuántos años faltan para llegar a 100 y muéstralo en pantalla
+      //Introducimos `` para añadir una variable dentro de un texto seguido del símbolo $ y {variable}
+      let añosPara100 = 100 - edad;
+      console.log(`Te faltan ${añosPara100} años para los 100 años`);
+
+      //Muestra los números del 1 al 10 utilizando un bucle for
+      console.log("Los números del 1 al 10 son; ");
+      for (let i = 1; i <= 10; i++) {
+        console.log(i);
+      }
+
+      //Genera un número aleatorio ente el 1 y el 10
+      //Math.random --> Genera un número aleatorio entre 0 y 1
+      //Math.floor --> Redondea hacia abajo un número aleatorio
+      let numeroAleatorio = Math.floor(Math.random() * 10) + 1;
+
+      //Permite al usuario intentar adivinar el número en un máximo de 3 intentos
+      let intentos = 3;
+      for (let i = 1; i <= intentos; i++) {
+        let adivinanza = parseInt(prompt("Adivina el número: "));
+        if (adivinanza === numeroAleatorio) {
+          console.log("¡Correcto!");
+          break; //Salimos del bucle
+        } else {
+          console.log("Número incorrecto, pruebe de nuevo");
+        }
+        //Si se han agotado los intentos
+        if (i === intentos) {
+          console.log(
+            `No te quedan intentos. El número aleatorio era ${numeroAleatorio}`
+          );
+        }
+      }
+    </script>
+  </body>
+</html>

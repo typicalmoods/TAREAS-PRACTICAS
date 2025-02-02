@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Palabra en Documento</title>
+    <style>
+        /* Estilo para resaltar las palabras encontradas */
+        .resaltado {
+            background-color: yellow;
+            color: red;
+            font-weight: bold;
+        }
+        /* Estilo para el cuadro de búsqueda */
+        #buscador {
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        #contenido {
+            height: 400px;
+            overflow-y: scroll;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Buscar Palabra en el Documento</h1>
+
+    <!-- Cuadro de búsqueda -->
+    <input type="text" id="buscador" placeholder="Escribe la palabra a buscar" oninput="buscarPalabra()">
+
+    <!-- Contenido largo para simular un documento -->
+    <div id="contenido">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. 
+        <br><br>
+        Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. 
+        <br><br>
+        Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Curabitur a felis in nunc fringilla tristique. Curabitur suscipit suscipit tellus. Nam at nulla urna. Quisque at nisl. Nulla tristique lorem eu nulla. Sed eleifend. Pellentesque dignissim blandit risus.</p>
+    </div>
+
+    <script>
+        function buscarPalabra() {
+            // Obtener el valor del cuadro de búsqueda
+            var palabra = document.getElementById("buscador").value;
+            var contenido = document.getElementById("contenido");
+            var texto = contenido.innerHTML;
+
+            // Limpiar los resaltados previos
+            contenido.innerHTML = texto.replace(/<span class="resaltado">/g, "").replace(/<\/span>/g, "");
+
+            if (palabra) {
+                // Crear una expresión regular para la búsqueda (con soporte para mayúsculas y minúsculas)
+                var regex = new RegExp('(' + palabra + ')', 'gi');
+                
+                // Resaltar la palabra encontrada
+                contenido.innerHTML = texto.replace(regex, '<span class="resaltado">$1</span>');
+                
+                // Hacer scroll hacia la palabra resaltada
+                var primeraPalabraResaltada = document.querySelector(".resaltado");
+                if (primeraPalabraResaltada) {
+                    primeraPalabraResaltada.scrollIntoView({ behavior: "smooth", block: "center" });
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>

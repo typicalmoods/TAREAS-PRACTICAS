@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestión de salas</title>
+  </head>
+  <body>
+    <script>
+      //Creamos un array para almacenar las salas
+      const salas = [];
+
+      //1. Función para añadir una sala
+      function anadirSala(nombre, capacidad, recursos) {
+        const sala = {
+          nombre: nombre,
+          capacidad: capacidad,
+          recursos: recursos,
+          ocupada: false, //Por defecto estará false (libre)
+        };
+
+        //push --> añadir un objeto/elemento a un vector
+        salas.push(sala);
+        console.log(`Sala "${nombre}" añadida correctamente`);
+      }
+
+      //2. Función para listar todas las salas
+      function listarSalas() {
+        if (salas.length === 0) {
+          console.log("No hay salas");
+          return;
+        }
+        console.log("Salas disponibles: ");
+        salas.forEach((sala) => {
+          console.log(
+            `${sala.nombre}(Capacidad: ${
+              sala.capacidad
+            }, Recursos: ${sala.recursos.join(",")}, Ocupada: ${
+              sala.ocupada ? "Sí" : "No"
+            } )`
+          );
+        });
+      }
+
+      //3. Función para buscar salas por recurso
+      function buscarSalasPorRecurso(recurso) {
+        //filter --> selecciona aquellos objetos que cumplan una propiedad
+        const salasConRecurso = salas.filter((sala) =>
+          sala.recursos.includes(recurso)
+        );
+        if (salasConRecurso.length > 0) {
+          console.log(`Salas con el recurso seleccionado "${recurso}": `);
+          salasConRecurso.forEach((sala) => console.log(`${sala.nombre}`));
+        } else {
+          console.log(`No existen salas con el recurso solicitado`);
+        }
+      }
+
+      //4. Función para reservar una sala
+      function reservarSala(nombre) {
+        const sala = salas.find((s) => s.nombre === nombre);
+        if (!sala) {
+          console.log(`No se encontró la sala solicitada`);
+          return;
+        }
+        if (sala.ocupada) {
+          console.log(`La sala ${nombre} está ocupada`);
+        } else {
+          sala.ocupada = true;
+          console.log(`La sala ${nombre} ha sido reservada`);
+        }
+      }
+      //5. Función para liberar una sala
+      function liberarSala(nombre) {
+        const sala = salas.find((s) => s.nombre === nombre);
+        if (!sala) {
+          console.log(`No se encontró la sala solicitada`);
+        }
+        if (!sala.ocupada) {
+          console.log(`La sala ${nombre} ya está libre`);
+        } else {
+          sala.ocupada = false;
+          console.log(`La sala ${nombre} ha sido desocupada`);
+        }
+      }
+
+      //---- Ejemplos de uso
+
+      anadirSala("Sala A", 20, ["Proyector", "Wifi"]);
+      anadirSala("Sala B", 15, ["Pizarra", "Wifi"]);
+      anadirSala("Sala C", 15, ["Proyector", "Wifi"]);
+
+      listarSalas();
+
+      buscarSalasPorRecurso("Proyector");
+
+      reservarSala("Sala A");
+
+      liberarSala("Sala A");
+
+      //Liberar una sala que ya está libre
+      liberarSala("Sala A");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nombre y edad</title>
+  </head>
+  <body>
+    <script>
+      let nombre = prompt("Ingresa tu nombre: ");
+        while(nombre.trim() === "") {
+            nombre = prompt("Por favor, ingrese un nombre válido: ");
+        }
+
+      let edad = parseInt(prompt("Ingresa tu edad: "));
+
+      while (isNaN(edad) || edad <= 0) {
+        edad = parseInt(
+          prompt("Número no válido. Por favor, introduzca una edad válida.")
+        );
+      }
+
+      if (!isNaN(edad) && edad >= 18) {
+        console.log("¡Felicidades! ¡Eres mayor de edad!");
+      } else {
+        console.log("Todavía eres menor de edad.");
+      }
+    </script>
+  </body>
+</html>

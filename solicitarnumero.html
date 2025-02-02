@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //Declaramos el número del día
+      let numeroDia = prompt("Ingresa un número del 1 al 7");
+
+      //Controlamos qué introduce el usuario
+      while (isNaN(numeroDia) || numeroDia < 1 || numeroDia > 7) {
+        numeroDia = prompt("Número no válido. Introduzca un número del 1 al 7");
+      }
+
+      //Asignamos a cada número el dia de la semana correspondiente
+      if (numeroDia == 1) {
+        console.log("Hoy es lunes");
+      } else if (numeroDia == 2) {
+        console.log("Hoy es martes");
+      } else if (numeroDia == 3) {
+        console.log("Hoy es miércoles");
+      } else if (numeroDia == 4) {
+        console.log("Hoy es jueves");
+      } else if (numeroDia == 5) {
+        console.log("Hoy es viernes");
+      } else if (numeroDia == 6) {
+        console.log("Hoy es sábado");
+      } else if (numeroDia == 7) {
+        console.log("Hoy es domingo");
+      }
+    </script>
+  </body>
+</html>

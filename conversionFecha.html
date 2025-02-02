@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function validarFormatoFecha(fecha) {
+            // Validar formato dd/mm/aaaa
+            const regex = /^\d{2}\/\d{2}\/\d{2}$/;
+            return regex.test(fecha);
+        }
+
+        function pedirFechas() {
+            let fecha1, fecha2;
+
+            // Pedir la primera fecha hasta que sea válida
+            do {
+                fecha1 = prompt("Introduce la primera fecha en formato dd/mm/aaaa:");
+                if (!validarFormatoFecha(fecha1)) {
+                    alert("Formato incorrecto. Asegúrate de usar dd/mm/aaaa.");
+                }
+            } while (!validarFormatoFecha(fecha1));
+
+            // Pedir la segunda fecha hasta que sea válida
+            do {
+                fecha2 = prompt("Introduce la segunda fecha en formato dd/mm/aaaa:");
+                if (!validarFormatoFecha(fecha2)) {
+                    alert("Formato incorrecto. Asegúrate de usar dd/mm/aaaa.");
+                }
+            } while (!validarFormatoFecha(fecha2));
+
+            // Convertir las fechas a objetos Date
+            const partesFecha1 = fecha1.split("/");
+            const partesFecha2 = fecha2.split("/");
+
+            const date1 = new Date(partesFecha1[2], partesFecha1[1] - 1, partesFecha1[0]);
+            const date2 = new Date(partesFecha2[2], partesFecha2[1] - 1, partesFecha2[0]);
+
+            // Calcular la diferencia en días
+            const diferenciaMilisegundos = Math.abs(date2 - date1);
+            const diferenciaDias = Math.ceil(diferenciaMilisegundos / (1000 * 60 * 60 * 24));
+
+            // Mostrar el resultado
+            document.getElementById("resultado").textContent = `La diferencia entre las fechas es de ${diferenciaDias} días.`;
+        }
+    </script>
+</body>
+</html>

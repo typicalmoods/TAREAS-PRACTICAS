@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Agregar un método al prototipo de Array para calcular la suma de sus elementos
+        Array.prototype.sumarElementos = function() {
+            return this.reduce((acumulador, valorActual) => acumulador + valorActual, 0);
+        };
+
+        function calcularSuma() {
+            // Obtener el valor del input
+            const input = document.getElementById('arrayInput').value;
+            // Convertir la entrada en un array de números
+            const numeros = input.split(',').map(Number);
+
+            // Validar si la conversión fue exitosa
+            if (numeros.some(isNaN)) {
+                document.getElementById('resultado').textContent = 'Por favor, ingresa solo números separados por comas.';
+                return;
+            }
+
+            // Calcular la suma usando el método personalizado
+            const suma = numeros.sumarElementos();
+
+            // Mostrar el resultado
+            document.getElementById('resultado').textContent = `La suma de los elementos es: ${suma}`;
+        }
+    </script>
+</body>
+</html>
