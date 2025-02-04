@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //1. Cálculo del área de un círculo
+      function calcularAreaCirculo(radio) {
+        //Math.PI --> Valos de PI
+        //Math.pow --> eleva un número a una potencia
+        const area = Math.PI * Math.pow(radio, 2);
+
+        //Mostramos el resultado
+        //toFixed(2) --> para que devuelva dos decimales
+        console.log(`El área del círculo es ${area.toFixed(2)}`);
+      }
+
+      //2. Generar un número aleatorio entre 1 y 100
+      function generarNumeroAleatorio() {
+        //Math.random --> genera número decimal entre 0(incluido) y 1(no incluido)
+        //Math.floor --> rendondea un número a la baja
+        const numeroAleatorio = Math.floor(Math.random() * 100) + 1;
+        console.log(`El número aleatorio es ${numeroAleatorio}`);
+      }
+
+      //3. Calcular días desde inicio hasta fecha actual
+      function calcularDias() {
+        //Obtenemos fecha actual
+        const fechaActual = new Date();
+
+        //Creamos fecha para el primer día del año en el que estamos
+        //getFullYear --> nos da el año completo
+        const inicioAno = new Date(fechaActual.getFullYear(), 0, 1);
+
+        //Diferencia entre fechas --> en milisegundos
+        const diferenciaFechas = fechaActual - inicioAno;
+
+        //Lo convertimos en días
+        //1segundos--> 1000ms, 1min--> 60 segs, 1hora--> 60mins, 1dia--> 24horas
+        const diasPasados = Math.floor(
+          diferenciaFechas / (1000 * 60 * 60 * 24)
+        );
+        console.log(`Han pasado ${diasPasados} días desde el inicio del año`);
+
+        //Creamos una variable para guardar cómo queremos que nos guarde la fecha
+        const opciones = {
+          weekday: "long", //Días de la semana(lunes, martes...)
+          year: "numeric",
+          month: "long", //Mes completo(enero, febrero...)
+          day: "numeric",
+          hour: "2-digit",
+          minute: "2-digit",
+        };
+
+        //Formateamos la fecha con toLocalDateString
+        const fechaFormateada = fechaActual.toLocaleDateString(
+          "es-ES",
+          opciones
+        );
+        console.log(`Fecha formateada: ${fechaFormateada}`);
+      }
+
+      //Llamamos a las funciones
+      calcularAreaCirculo(5);
+      generarNumeroAleatorio();
+      calcularDias();
+    </script>
+  </body>
+</html>
