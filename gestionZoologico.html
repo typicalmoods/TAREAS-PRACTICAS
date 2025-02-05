@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de zoológico</title>
+</head>
+
+<body>
+    <script>
+        //Creamos el objeto de animal
+        function Animal(nombre, tipo, edad, sonido) {
+            this.nombre = nombre;
+            this.tipo = tipo;
+            this.edad = edad;
+            this.sonido = sonido;
+        }
+        //Creamos el objeto león para comprobar que funciona
+        let leon = new Animal("león", "mamífero", 38, "rugido");
+
+        //Mostramos la información en consola
+        console.log(`Información del animal`);
+        console.log("\n");//Salto de línea
+        console.log(`Nombre: ${leon.nombre}`);
+        console.log(`Tipo: ${leon.tipo}`);
+        console.log(`Edad: ${leon.edad}`);
+        console.log(`Sonido: ${leon.sonido}`);
+
+        //Añadimoa el método de hacer sonido
+        Animal.prototype.hacerSonido = function () {
+            console.log(`${this.nombre} hace el sonido ${this.sonido}`);
+        }
+
+        //Añadimos la propiedad de color
+        Animal.prototype.colorAnimal = "Desconocido";
+
+        //Asigamos la propiedad y usamos el método
+        leon.colorAnimal = "Amarillo ocre";
+
+        //Mostramos por consola
+        console.log(`Color del leon: ${leon.colorAnimal}`);
+
+        leon.hacerSonido();
+    </script>
+</body>
+
+</html>
