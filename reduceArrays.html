@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        Array.prototype.suma = function () {
+            //reduce --> compara los elementos de una array de 2 en 2
+            const suma = this.reduce((anterior, actual) => (anterior + actual));
+            return suma;
+        }
+
+        let a = [1, 2, 3, 4, 5];
+        console.log(a.suma());
+    </script>
+</body>
+
+</html>
