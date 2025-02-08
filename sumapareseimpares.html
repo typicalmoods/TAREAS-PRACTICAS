@@ -1,42 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Suma de números pares e impares</title>
-  </head>
-  <body>
-    <script>
-      //Crea un programa que calcule la suma de números pares e
-      //impares en un rango de números. El programa debe pedir al usuario que
-      //ingrese dos números, un número de inicio y un número de fin. Luego, debe calcular
-      //la suma de los números pares y la suma de los números impares dentro de ese rango, y mostrar los resultados.
-      const numeroInicio=parseInt(prompt("Ingrese el número de inicio"));
-      const numeroFin=parseInt(prompt("Ingrese el número de finalización"));
 
-      //Validación de los números
-      if(!isNaN(numeroInicio) && !isNaN(numeroFin)){
-          let sumaPares=0;
-          let sumaImpares=0;
-          let numeroActual=numeroInicio;
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Suma de números pares e impares</title>
+</head>
 
-          //número % 2 = 0 --> el número es par
-          //número % 2 es distinto de 0 --> el número es impar
-          while(numeroActual <= numeroFin){
-              if(numeroActual % 2 === 0){
-                  sumaPares += numeroActual;
-              }else{
-                  sumaImpares += numeroActual
-              }
-              //Incrementamos la variable numeroActual para actualizar su valor
-              numeroActual++;
-          }
-          console.log("Suma de los números pares: ", sumaPares);
-          console.log("Suma de los números impares: ", sumaImpares);
+<body>
+  <script>
+    //Crea un programa que calcule la suma de números pares e
+    //impares en un rango de números. El programa debe pedir al usuario que
+    //ingrese dos números, un número de inicio y un número de fin. Luego, debe calcular
+    //la suma de los números pares y la suma de los números impares dentro de ese rango, y mostrar los resultados.
+    const numeroInicio = parseInt(prompt("Ingrese el número de inicio"));
+    const numeroFin = parseInt(prompt("Ingrese el número de finalización"));
 
-      }else{
-          console.log("Introduzca bien los números");
+    //Validación de los números
+    if (!isNaN(numeroInicio) && !isNaN(numeroFin)) {
+      let sumaPares = 0;
+      let sumaImpares = 0;
+      let numeroActual = numeroInicio;
+
+      //número % 2 = 0 --> el número es par
+      //número % 2 es distinto de 0 --> el número es impar
+      while (numeroActual <= numeroFin) {
+        if (numeroActual % 2 === 0) {
+          sumaPares += numeroActual;
+        } else {
+          sumaImpares += numeroActual
+        }
+        //Incrementamos la variable numeroActual para actualizar su valor
+        numeroActual++;
       }
-    </script>
-  </body>
+      console.log("Suma de los números pares: ", sumaPares);
+      console.log("Suma de los números impares: ", sumaImpares);
+
+    } else {
+      console.log("Introduzca bien los números");
+    }
+  </script>
+</body>
+
 </html>
