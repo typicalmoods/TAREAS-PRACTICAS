@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bom y dom</title>
+  </head>
+
+  <body>
+    <script>
+      /**
+       * BOM - Browser Object Model
+       * Objeto windows --> Representa la ventana
+       * document --> Contenido
+       * navigator --> Navegador del usuario
+       *  screen --> Pantalla del usuario
+       * location --> URL
+       * history --> historial
+       *
+       * TEMPORIZADORES
+       * setTimeOut (función, tiempo(milisegundos))
+       * setInterval (función, tiempo) --> Repetirse la función
+       *
+       * DOM
+       * Crear elementos (document.createElement)
+       * Modificar contenido (textContent e innerHTML)
+       * Modificar estilos (element.style)
+       * Añadir elementos (appendChild)
+       * Eliminar elementos (removeChild)
+       */
+
+      //Muestra una página que diga "¡Nos vamos!" y que tras 3 segundos nos redirija a la página del buscador de Google
+      //1. Creamos un elemento de tipo <p> para mostrar el mensaje en la página
+      var mensaje = document.createElement("p"); //Elemento de tipo párrafo
+      mensaje.textContent = "Nos vamos"; //Agregar el texto dentro del párrafo
+      document.body.appendChild(mensaje);
+
+      //2. Usamos el setTimeOut para redirigir tras 3 segundos a la página de Google
+      setTimeout(function () {
+        window.location.href = "https://www.google.com";
+      }, 3000);
+
+      //Obtén el ancho y el alto de la ventana del navegador, así como la URL actual.
+      //Muestra la información por consola
+      //1. Obtener el tamaño de la ventana
+      let ancho = window.innerWidth; // innerWidth --> Nos da el ancho en píxeles
+      let alto = window.innerHeight; // innerHeight --> Nos de la altura en píxeles
+
+      //2. Para obtener la URL actual
+      let urlActual = window.location.href;
+
+      //3. Mostramos la información por pantalla
+      console.log(`Ancho: ${ancho} px`);
+      console.log(`Alto: ${alto} px`);
+      console.log(`URL actual: ${urlActual} px`);
+      
+    </script>
+  </body>
+</html>

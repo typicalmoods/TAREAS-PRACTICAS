@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Objeto windows</title>
+  </head>
+  <body>
+    <script>
+      // Crear un programa que haga uso de varios métodos y propiedades del objeto window
+
+      //1. Ventana emergente de confirmación
+      let aceptaNotificacion = confirm("¿Desea recibir notificaciones?");
+      console.log(`Acepta notificaciones: ${aceptaNotificacion}`);
+
+      //2. Temporizador para redireccionamiento
+      setTimeout(function () {
+        window.location.href = "https://google.com";
+      }, 3000);
+
+      //3. Información sobre el navegador
+      let agenteUsuario = navigator.userAgent;
+      console.log(`Agente de usuario: ${agenteUsuario}`);
+
+      //4. Obtener la altura total del documento (scrollHeight)
+      let alturaDocumento = document.body.scrollHeight;
+      console.log(`Altura del documento: ${alturaDocumento}`);
+
+      //5. Lanzar un prompt pidiendo al usuario su nombre
+      let nombreUsuario = window.prompt("Introduce tu nombre");
+    </script>
+  </body>
+</html>
