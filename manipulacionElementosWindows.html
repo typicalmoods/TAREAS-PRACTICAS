@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manipulación de elementos del documento</title>
+  </head>
+  <body>
+    <script>
+      //1. Crear elemento de tipo <div>
+      let nuevoDiv = document.createElement("div");
+      let textoHola = document.createTextNode("Hola, mundo");
+
+      //2. Modificar los estilos del div
+      nuevoDiv.style.backgroundColor = "red";
+      nuevoDiv.style.padding = "10px";
+      nuevoDiv.style.color = "white";
+      nuevoDiv.style.fontSize = "20px";
+      nuevoDiv.style.textAlign = "center";
+
+      //3. Agregamos el texto al div y el div al documento
+      nuevoDiv.appendChild(textoHola);
+      document.body.appendChild(nuevoDiv);
+
+      //4. Temporizador para eliminar el div después de 5 segundos
+      setTimeout(function () {
+        document.body.removeChild(nuevoDiv); //Elimina el div creado
+      }, 5000);
+    </script>
+  </body>
+</html>
