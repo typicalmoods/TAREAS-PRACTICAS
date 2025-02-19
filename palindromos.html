@@ -13,23 +13,23 @@
 
         function esPalindromo(texto){
             //Convierto el texto en minúsculas
-            var textoLimpio = texto.toLowerCase();
+            let textoLimpio = texto.toLowerCase();
             return textoLimpio === textoLimpio.split('').reverse().join('');
         }
     </script>
 </head>
 <body>
     <script>
-        var textoUsario = prompt("Ingrese un texto: ");
+        let textoUsario = prompt("Ingrese un texto: ");
 
         //trim--> Quitar los espacios del principio y del final
         if(textoUsario.trim()==''){
-            var textoUsuario = prompt("Por favor, ingrese un texto válido.");
+            let textoUsuario = prompt("Por favor, ingrese un texto válido.");
         }else{
-            var esPalin = esPalindromo(textoUsario);
+            let esPalin = esPalindromo(textoUsario);
 
             //if(esPalin == true) mensaje = "Es palíndromo"; else...
-            var mensaje = esPalin? 'Es palíndromo' : 'No es palíndromo';
+            let mensaje = esPalin? 'Es palíndromo' : 'No es palíndromo';
             console.log(`${mensaje}`);
         }
     </script>
