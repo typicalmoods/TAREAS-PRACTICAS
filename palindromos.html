@@ -20,13 +20,13 @@
   </head>
   <body>
     <script>
-      let textoUsario = prompt("Ingrese un texto: ");
+      let textoUsuario = prompt("Ingrese un texto: ");
 
       //trim--> Quitar los espacios del principio y del final
-      if (textoUsario.trim() == "") {
+      if (textoUsuario.trim() == "") {
         let textoUsuario = prompt("Por favor, ingrese un texto válido.");
       } else {
-        let esPalin = esPalindromo(textoUsario);
+        let esPalin = esPalindromo(textoUsuario);
 
         //if(esPalin == true) mensaje = "Es palíndromo"; else...
         let mensaje = esPalin ? "Es palíndromo" : "No es palíndromo";
