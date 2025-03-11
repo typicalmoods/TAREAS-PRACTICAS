@@ -7,6 +7,17 @@
   </head>
   <body>
     <script>
+      // localStorage -->
+      /*
+      - No expira
+      - clave - valor
+      - Guardado local
+      --> localStorage.setItem (cuando queremos guardar datos), indicamos la clave y el valor
+      --> localStorage.getItem (mostrar algún dato o conseguirlo), indicamos su clave y su valor
+      --> localStorage.removeItem (si queremos eliminar)
+      --> localStorage.clear (para eliminar todo el almacenamiento)
+      */
+
       //1. Crear el contenedor de la encuesta
       let encuestaDiv = document.createElement("div");
       encuestaDiv.style.backgroundColor = "#DAD2FF";
@@ -16,6 +27,82 @@
       encuestaDiv.style.position = "fixed";
       encuestaDiv.style.top = "50%";
       encuestaDiv.style.left = "50%";
+      encuestaDiv.style.transform = "translate(-50%, -50%)";
+      encuestaDiv.style.boxShadow = "0px 4px 6px rgba(0,0,0,0.2)";
+
+      //2. Crear el texto de la pregunta
+      let pregunta = document.createElement("p");
+      pregunta.textContent = "¿Te gusta JavaScript?";
+      pregunta.style.fontSize = "18px";
+      pregunta.style.fontWeight = "bold";
+
+      // 3.Creamos botones de "sí" o "no"
+
+      let botonSi = document.createElement("button");
+      botonSi.textContent = "Sí";
+      botonSi.style.margin = "10px";
+      botonSi.style.padding = "10px";
+      botonSi.style.cursor = "pointer";
+
+      let botonNo = document.createElement("button");
+      botonNo.textContent = "No";
+      botonNo.style.margin = "10px";
+      botonNo.style.padding = "10px";
+      botonNo.style.cursor = "pointer";
+
+      // 4. Creamos una función para la respuesta
+      function manejarRespuesta(respuesta) {
+        // Guardaremos nuestra respuesta en nuestro almacenamiento interno
+        localStorage.setItem("respuestaEncuesta", respuesta);
+
+        // 5. Cambiamos el fondo dependiendo de la respuesta
+        if (respuesta === "Sí") {
+          document.body.style.backgroundColor = "lightgreen";
+        } else {
+          document.body.style.backgroundColor = "lightcoral";
+        }
+
+        // 6. Mandamos un mensaje tras 5 segundos
+        setTimeout(function () {
+          // 7. Aseguramos que la encuesta todavía nestá en el documento
+          if (document.body.contains(encuestaDiv)) {
+            document.body.removeChild(encuestaDiv);
+          }
+
+          // 8. Mensaje al usuario de agradecimiento por haber realizado la encuesta
+          let mensaje = document.createElement("p");
+          mensaje.textContent = "Gracias por participar";
+          mensaje.style.fontSize = "20px";
+          mensaje.style.fontWeight = "bold";
+          mensaje.style.textAlign = "center";
+
+          document.body.appendChild(mensaje);
+        }, 5000);
+      }
+
+      // 9. Asignamos funciones a los botones (trabajamos con eventos)
+      botonSi.onclick = function () {
+        manejarRespuesta("Sí");
+      };
+
+      botonNo.onclick = function () {
+        manejarRespuesta("No");
+      };
+
+      // 10. Agregamos los elementos a la encuesta
+      encuestaDiv.appendChild(pregunta);
+      encuestaDiv.appendChild(botonSi);
+      encuestaDiv.appendChild(botonNo);
+
+      // 11. Añadimos la encuesta
+      document.body.appendChild(encuestaDiv);
+
+      // 11. Verificamos si hay una respuesta guardada
+      let respuestaGuardada = localStorage.getItem("respuestaEncuesta");
+      if (respuestaGuardada) {
+        document.body.style.backgroundColor =
+          respuestaGuardada === "Sí" ? "lightgreen" : "lightcoral";
+      }
     </script>
   </body>
 </html>
