@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cambiar color del elemento</title>
+    <style>
+      myDiv {
+        width: 200px;
+        height: 200px;
+        background: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="myDiv">Pasa el mouse por aquí</div>
+    <script>
+      let div = document.getElementById("myDiv");
+
+      // mouseover --> sucede cuando el ratón está sobre el elemento
+      div.addEventListener("mouseover", function () {
+        div.style.backgroundColor = "blue";
+      });
+
+      // mouseout --> sucede cuando el ratón sale del elemento
+      div.addEventListener("mouseout", function () {
+        div.style.backgroundColor = "yellow";
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de palabras</title>
+  </head>
+  <body>
+    <ul id="miLista">
+      <li>Manzana</li>
+      <li>Naranja</li>
+      <li>Uva</li>
+      <li>Pera</li>
+      <li>Mango</li>
+      <li>Plátano</li>
+      <li>Fresa</li>
+    </ul>
+    <script>
+      // Obtener la lista y los elementos
+      let lista = document.getElementById("miLista");
+
+      // Función para preguntar al usuario después de 3 segundos
+      function preguntarOrdenAlfabetico() {
+        setTimeout(function () {
+          let respuesta = confirm("¿Quieres ordenar la lista?");
+
+          // Si el usuario acepta, ordena la lista
+          if (respuesta) {
+            ordenarListaAlfabeticamente();
+          }
+        }, 3000);
+      }
+
+      // Función para ordenar la lista alfabéticamente
+      function ordenarListaAlfabeticamente() {
+        // Convertir la colección de elementos en un array --> from
+        let arrayElementos = Array.from(lista.getElementsByTagName("li"));
+
+        // Ordenar el array
+        arrayElementos.sort(function (a, b) {
+          return a.textContent.localeCompare(b.textContent);
+        });
+
+        // Eliminamos los elementosde la lista
+        while (lista.firstChild) {
+          lista.removeChild(lista.firstChild);
+        }
+
+        // Agregar elementos ordenados
+        arrayElementos.forEach(function (elemento) {
+          lista.appendChild(elemento);
+        });
+      }
+
+      // Iniciamos el proceso
+      preguntarOrdenAlfabetico();
+    </script>
+  </body>
+</html>
